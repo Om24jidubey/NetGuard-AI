@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 
-const API = "http://localhost:8001";
+const API = "https://netguard-ai-backend-qi2k.onrender.com";
 
 const SUGGESTED = [
   "What is a SYN Flood attack?",

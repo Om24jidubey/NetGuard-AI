@@ -5,7 +5,7 @@ import {
 } from "recharts";
 import AlertCard from "./AlertCard";
 
-const API = "http://127.0.0.1:8001";
+const API = "https://netguard-ai-backend-qi2k.onrender.com";
 
 // const SEVERITY_COLORS = {
 //   critical: "#e24b4a",
