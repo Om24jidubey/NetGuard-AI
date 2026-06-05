@@ -1,0 +1,35 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .shield { fill: #0D1F3C; stroke: #00D4FF; stroke-width: 1.2; }
+      .eye { fill: #00C896; }
+      .pupil { fill: #0A1628; }
+      .dot { fill: #00D4FF; }
+      .circuit { stroke: #00D4FF; stroke-width: 0.7; fill: none; opacity: 0.6; }
+    </style>
+  </defs>
+
+  <!-- Shield -->
+  <path d="M16,2 L26,6 L26,18 Q26,26 16,30 Q6,26 6,18 L6,6 Z" class="shield"/>
+
+  <!-- Circuit traces -->
+  <line x1="9" y1="12" x2="12" y2="12" class="circuit"/>
+  <line x1="12" y1="12" x2="12" y2="14" class="circuit"/>
+  <line x1="20" y1="12" x2="23" y2="12" class="circuit"/>
+  <line x1="20" y1="12" x2="20" y2="14" class="circuit"/>
+  <line x1="12" y1="14" x2="20" y2="14" class="circuit" opacity="0.9"/>
+
+  <!-- Eye iris -->
+  <ellipse cx="16" cy="17" rx="5" ry="3.5" fill="#0A1628" stroke="#00D4FF" stroke-width="1"/>
+  <circle cx="16" cy="17" r="2.8" class="eye"/>
+  <circle cx="16" cy="17" r="1.6" class="pupil"/>
+  <circle cx="16" cy="17" r="0.7" class="dot"/>
+  <!-- Glint -->
+  <circle cx="14.5" cy="15.8" r="0.6" fill="white" opacity="0.8"/>
+
+  <!-- AI badge -->
+  <rect x="11" y="22" width="10" height="5" rx="1.5" fill="#00C896"/>
+  <text x="16" y="26" text-anchor="middle"
+        font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="3.8" font-weight="700" fill="#0A1628" letter-spacing="0.5">AI</text>
+</svg>

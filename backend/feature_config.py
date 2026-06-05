@@ -1,0 +1,22 @@
+FEATURES = [
+    " Flow Duration",
+    " Total Fwd Packets",
+    " Total Backward Packets",
+    "Total Length of Fwd Packets",
+    " Total Length of Bwd Packets",
+    " Fwd Packet Length Mean",
+    " Bwd Packet Length Mean",
+    "Flow Bytes/s",
+    " Flow Packets/s",
+    " Flow IAT Mean",
+    " Flow IAT Std",
+    " Packet Length Mean",
+    " Packet Length Std",
+    " SYN Flag Count",
+    " ACK Flag Count",
+    " Down/Up Ratio",
+    " Average Packet Size",
+    "Idle Mean",          # <-- fixed
+    " Active Max",
+    " Idle Max",
+]

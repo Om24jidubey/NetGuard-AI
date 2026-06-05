@@ -1,0 +1,28 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background circle for favicon context -->
+  <rect width="32" height="32" rx="6" fill="#0A1628"/>
+
+  <!-- Shield -->
+  <path d="M16,3 L25,6.5 L25,17.5 Q25,24.5 16,28.5 Q7,24.5 7,17.5 L7,6.5 Z"
+        fill="#0D1F3C" stroke="#00D4FF" stroke-width="1.2"/>
+
+  <!-- Inner shield ring -->
+  <path d="M16,5.5 L23,8.5 L23,17.5 Q23,23 16,26.5 Q9,23 9,17.5 L9,8.5 Z"
+        fill="none" stroke="#1E3A5F" stroke-width="0.6"/>
+
+  <!-- Horizontal circuit line -->
+  <line x1="10" y1="14" x2="22" y2="14" stroke="#00D4FF" stroke-width="0.7" opacity="0.5"/>
+
+  <!-- Eye -->
+  <ellipse cx="16" cy="17" rx="5.5" ry="3.8" fill="#0A1628" stroke="#00D4FF" stroke-width="1"/>
+  <circle cx="16" cy="17" r="2.6" fill="#00C896"/>
+  <circle cx="16" cy="17" r="1.4" fill="#0A1628"/>
+  <circle cx="16" cy="17" r="0.6" fill="#00D4FF"/>
+  <circle cx="14.6" cy="15.8" r="0.55" fill="white" opacity="0.75"/>
+
+  <!-- Bottom AI text -->
+  <rect x="11.5" y="22.5" width="9" height="4.5" rx="1.2" fill="#00C896"/>
+  <text x="16" y="26.2" text-anchor="middle"
+        font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="3.6" font-weight="700" fill="#0A1628" letter-spacing="0.4">AI</text>
+</svg>

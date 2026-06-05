@@ -1,0 +1,20 @@
+# Python
+backend/venv/
+backend/__pycache__/
+backend/.env
+backend/chroma_db/
+backend/security_report.pdf
+
+# Database
+*.db
+
+# React
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+
+# General
+__pycache__/
+*.pyc
+*.log
+.DS_Store
