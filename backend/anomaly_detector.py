@@ -8,8 +8,7 @@ import torch.nn as nn
 from pathlib import Path
 from feature_config import FEATURES
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+BASE_DIR = Path(__file__).resolve().parent
 MODEL_PATH = BASE_DIR / "models" / "autoencoder.pt"
 SCALER_PATH = BASE_DIR / "models" / "scaler.pkl"
 

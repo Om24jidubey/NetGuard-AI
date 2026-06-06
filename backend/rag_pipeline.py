@@ -17,7 +17,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 load_dotenv()
 
 CHROMA_DB_PATH = os.getenv("CHROMA_DB_PATH", "./chroma_db")
-DOCS_PATH      = os.getenv("DOCS_PATH", "../docs")
+DOCS_PATH      = os.getenv("DOCS_PATH", "./docs")
 
 # FREE embeddings using sentence-transformers — no API key needed
 embeddings = HuggingFaceEmbeddings(

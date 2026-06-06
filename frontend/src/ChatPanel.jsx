@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-
+import { marked } from "marked"
 const API = "https://netguard-ai-backend-qi2k.onrender.com";
 
 const SUGGESTED = [
@@ -18,7 +18,7 @@ export default function ChatPanel() {
         "Hi! I'm NetGuard AI. Ask me anything about network security — attacks, detection, or how to fix threats. I'll explain everything in plain English. 🛡️",
     },
   ]);
-  const [input, setInput]     = useState("");
+  const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const bottomRef = useRef(null);
 
@@ -43,9 +43,9 @@ export default function ChatPanel() {
 
     try {
       const res = await fetch(`${API}/chat`, {
-        method:  "POST",
+        method: "POST",
         headers: { "Content-Type": "application/json" },
-        body:    JSON.stringify({ question: q, history: history.slice(0, -1) }),
+        body: JSON.stringify({ question: q, history: history.slice(0, -1) }),
       });
       const data = await res.json();
       setMessages((prev) => [...prev, { role: "assistant", content: data.answer }]);
@@ -94,7 +94,11 @@ export default function ChatPanel() {
               {msg.role === "assistant" ? "🛡️" : "👤"}
             </div>
             <div className="message-bubble">
-              <pre className="message-text">{msg.content}</pre>
+              {/* <pre className="message-text">{msg.content}</pre> */}
+              <div
+                className="message-text"
+                dangerouslySetInnerHTML={{ __html: marked(msg.content || "") }}
+              />
             </div>
           </div>
         ))}

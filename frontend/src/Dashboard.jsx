@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { marked } from "marked";
 import {
   LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer,
   PieChart, Pie, Cell
@@ -73,7 +74,7 @@ export default function Dashboard() {
       const data = await res.json();
       setUploadResult(data);
       await fetchStats();
-      
+
       await fetchHistory();
     } catch {
       setUploadResult({ error: "Could not reach backend. Make sure uvicorn is running." });
@@ -308,9 +309,13 @@ export default function Dashboard() {
 
                   )}
 
-                  <pre className="explanation-text">
+                  {/* <pre className="explanation-text">
                     {explanation}
-                  </pre>
+                  </pre> */}
+                  <div
+                    className="explanation-text"
+                    dangerouslySetInnerHTML={{ __html: marked(explanation || "") }}
+                  />
 
                 </>
 
@@ -432,7 +437,11 @@ export default function Dashboard() {
 
         {uploadResult && !uploadResult.error && (
           <div className="upload-result">
-            <div className="result-summary">{uploadResult.summary}</div>
+            {/* <div className="result-summary">{uploadResult.summary}</div> */}
+            <div
+              className="result-summary"
+              dangerouslySetInnerHTML={{ __html: marked(uploadResult.summary || "") }}
+            />
             <div className="result-stats">
               <span>Total: <b>{uploadResult.total_analyzed}</b></span>
               <span className="danger-text">Anomalies: <b>{uploadResult.anomalies_found}</b></span>

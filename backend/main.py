@@ -21,7 +21,12 @@ from database import get_alert_history
 from rag_pipeline import query_rag
 from anomaly_detector import detect_anomaly, analyze_log_file, load_or_train_model
 from llm_engine import explain_anomaly, chat, summarize_log_analysis
-
+import os
+import torch
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+torch.set_num_threads(1)
 load_dotenv()
 # Stores latest detected anomalies from uploads
 LATEST_ALERTS = []
@@ -176,7 +181,7 @@ async def upload_log(file: UploadFile = File(...)):
         raise HTTPException(status_code=400, detail=f"Failed to parse CSV: {e}")
 
     # Cap at 100 rows for speed in demo
-    df = df.head(100).fillna(0)
+    df = df.head(50).fillna(0)
 
     results = analyze_log_file(df)
     global LATEST_ALERTS
