@@ -181,8 +181,9 @@ async def upload_log(file: UploadFile = File(...)):
         raise HTTPException(status_code=400, detail=f"Failed to parse CSV: {e}")
 
     # Cap at 100 rows for speed in demo
-    df = df.head(50).fillna(0)
-
+    total_rows_uploaded = len(df)
+    df = df.head(100).fillna(0)
+    rows_analyzed = len(df)
     results = analyze_log_file(df)
     global LATEST_ALERTS
 
@@ -288,11 +289,13 @@ async def upload_log(file: UploadFile = File(...)):
 }
     
     return {
+    "total_rows_uploaded": total_rows_uploaded,
     "total_analyzed": len(results),
     "anomalies_found": len(anomalies),
     "normal_count": len(normal),
     "summary": summary,
-    "anomalies": anomalies[:20]
+    "anomalies": anomalies[:20],
+    "note": f"Only first {rows_analyzed} rows analyzed for demo performance."
 }
 
 

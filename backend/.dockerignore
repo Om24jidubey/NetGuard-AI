@@ -6,7 +6,7 @@ __pycache__/
 .git
 .gitignore
 
-chroma_db/
+
 
 *.csv
 

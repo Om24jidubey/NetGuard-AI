@@ -9,3 +9,4 @@ runtime.txt
 dist/
 build/
 .DS_Store
+chroma_db/
