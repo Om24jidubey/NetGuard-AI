@@ -26,35 +26,35 @@ Detects network intrusions using an Autoencoder neural network, classifies attac
 ## 📸 Screenshots
 
 ### Main Dashboard — Live Traffic & Threat Overview
-![NetGuard AI Dashboard](ss1_dashboard.png)
+![NetGuard AI Dashboard](assets/ss1_dashboard.png)
 
 > Stat cards, live traffic line chart (packets/sec), attack distribution pie chart, and real-time alert feed — all in one view.
 
 ---
 
 ### Detection History — Full Alert Log
-![Detection History](ss2_alerts.png)
+![Detection History](assets/ss2_alerts.png)
 
 > Every detected anomaly persisted in SQLite and surfaced in a sortable table with timestamp, attack type, severity badge, anomaly score, and source.
 
 ---
 
 ### AI Explanation Modal — Powered by Groq LLM + RAG
-![AI Explanation](ss3_ai_explanation.png)
+![AI Explanation](assets/ss3_ai_explanation.png)
 
 > One click on **Explain** fires a Groq LLM call with RAG context from ChromaDB. The modal shows severity, anomaly score, top contributing network features, and a structured plain-English breakdown of what happened and how to respond.
 
 ---
 
 ### CSV Upload & Executive Summary Report
-![Upload and Report](ss4_upload_report.png)
+![Upload and Report](assets/ss4_upload_report.png)
 
 > Upload any CICIDS2017-format network log. The backend runs the Autoencoder, classifies anomalies, and instantly surfaces an executive summary with top priority actions, total packets, and anomaly breakdown — plus a one-click PDF download.
 
 ---
 
 ### AI Assistant — RAG-Powered Security Chatbot
-![AI Assistant](ss5_ai_assistant.png)
+![AI Assistant](assets/ss5_ai_assistant.png)
 
 > A dedicated chatbot tab powered by Groq LLM + ChromaDB RAG over curated security docs. Ask anything — "Explain DNS amplification attacks", "How do I detect a port scan?" — and get expert, grounded answers instantly.
 
