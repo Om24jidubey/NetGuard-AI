@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { marked } from "marked"
-const API = "https://netguard-ai-backend-qi2k.onrender.com";
 
+const API = process.env.REACT_APP_API_URL;
 const SUGGESTED = [
   "What is a SYN Flood attack?",
   "How do I detect a port scan?",

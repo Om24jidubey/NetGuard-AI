@@ -6,7 +6,7 @@ import {
 } from "recharts";
 import AlertCard from "./AlertCard";
 
-const API = "https://netguard-ai-backend-qi2k.onrender.com";
+const API = process.env.REACT_APP_API_URL;
 
 // const SEVERITY_COLORS = {
 //   critical: "#e24b4a",
