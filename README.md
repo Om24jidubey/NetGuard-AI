@@ -1,32 +1,88 @@
-# 🛡️ NetGuard AI — AI-Powered Network Threat Detection Platform
-
 <div align="center">
 
-![NetGuard AI](https://img.shields.io/badge/NetGuard-AI-blue?style=for-the-badge&logo=shield&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![React](https://img.shields.io/badge/React-18+-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
-![Groq](https://img.shields.io/badge/Groq-LLM-FF6B35?style=for-the-badge)
+<img src="https://img.shields.io/badge/NetGuard-AI-0d1f3c?style=for-the-badge&logo=shield&logoColor=white" />
+<img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+<img src="https://img.shields.io/badge/FastAPI-0.100+-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
+<img src="https://img.shields.io/badge/React-18+-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
+<img src="https://img.shields.io/badge/PyTorch-2.0+-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" />
+<img src="https://img.shields.io/badge/Groq-LLaMA_3.1-FF6B35?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Docker-Deployed-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
+<img src="https://img.shields.io/badge/Vercel-Live-000000?style=for-the-badge&logo=vercel&logoColor=white" />
 
-**NetGuard AI** detects network intrusions using an Autoencoder neural network, explains threats using an LLM (Groq + RAG), and presents everything on a live React dashboard — helping network admins understand and respond to attacks instantly.
+# 🛡️ NetGuard AI
 
-[Features](#-features) • [Architecture](#-architecture) • [ML Pipeline](#-ml-pipeline) • [Tech Stack](#-tech-stack) • [Setup](#-setup) • [API Reference](#-api-reference)
+### AI-Powered Network Threat Detection Platform
+
+**Built end-to-end — from PyTorch model training to full cloud deployment.**
+
+Detects network intrusions using an Autoencoder neural network, classifies attack types, explains every threat in plain English via a Groq LLM + RAG pipeline, and presents everything on a live React dashboard.
+
+[🌐 Live Demo](https://netguard-ai-topaz.vercel.app) • [⚙️ Backend API](https://omhugginggface-netguard-ai-backend.hf.space) • [📖 API Docs](https://omhugginggface-netguard-ai-backend.hf.space/docs)
 
 </div>
 
 ---
 
+## 📸 Screenshots
+
+### Main Dashboard — Live Traffic & Threat Overview
+![NetGuard AI Dashboard](ss1_dashboard.png)
+
+> Stat cards, live traffic line chart (packets/sec), attack distribution pie chart, and real-time alert feed — all in one view.
+
+---
+
+### Detection History — Full Alert Log
+![Detection History](ss2_alerts.png)
+
+> Every detected anomaly persisted in SQLite and surfaced in a sortable table with timestamp, attack type, severity badge, anomaly score, and source.
+
+---
+
+### AI Explanation Modal — Powered by Groq LLM + RAG
+![AI Explanation](ss3_ai_explanation.png)
+
+> One click on **Explain** fires a Groq LLM call with RAG context from ChromaDB. The modal shows severity, anomaly score, top contributing network features, and a structured plain-English breakdown of what happened and how to respond.
+
+---
+
+### CSV Upload & Executive Summary Report
+![Upload and Report](ss4_upload_report.png)
+
+> Upload any CICIDS2017-format network log. The backend runs the Autoencoder, classifies anomalies, and instantly surfaces an executive summary with top priority actions, total packets, and anomaly breakdown — plus a one-click PDF download.
+
+---
+
+### AI Assistant — RAG-Powered Security Chatbot
+![AI Assistant](ss5_ai_assistant.png)
+
+> A dedicated chatbot tab powered by Groq LLM + ChromaDB RAG over curated security docs. Ask anything — "Explain DNS amplification attacks", "How do I detect a port scan?" — and get expert, grounded answers instantly.
+
+---
+
+## 🌐 Live Deployment
+
+| Layer | URL |
+|---|---|
+| 🖥️ **Frontend (Vercel)** | https://netguard-ai-topaz.vercel.app |
+| ⚙️ **Backend API (Hugging Face Spaces — Docker)** | https://omhugginggface-netguard-ai-backend.hf.space |
+| 📖 **Swagger / Interactive API Docs** | https://omhugginggface-netguard-ai-backend.hf.space/docs |
+
+> The backend runs as a **Dockerized FastAPI service on Hugging Face Spaces**. The frontend is deployed on **Vercel**. Both are live and publicly accessible — no setup needed to try it.
+
+---
+
 ## 🚨 The Problem It Solves
 
-Traditional network monitoring tools generate hundreds of raw alerts with no context — admins have to manually decode logs, cross-reference attack databases, and figure out what to do. This takes time, and in cybersecurity, time is everything.
+Traditional network monitoring tools generate hundreds of raw alerts with no context. Admins have to manually decode logs, cross-reference attack databases, and figure out what to do — and in cybersecurity, time is everything.
 
-**NetGuard AI** bridges this gap by:
-- **Detecting anomalies** in network traffic using unsupervised ML (no labeled attack data needed)
-- **Classifying attack types** (DDoS, Port Scan, SYN Flood, Brute Force, etc.)
-- **Explaining threats in plain English** using an LLM + RAG pipeline
-- **Providing an interactive chatbot** to ask security questions conversationally
-- **Generating downloadable PDF reports** for audits and documentation
+**NetGuard AI bridges this gap by:**
+
+- **Detecting anomalies** in network traffic using unsupervised ML — no labeled attack data required
+- **Classifying attack types** (DDoS, Port Scan, SYN Flood, Brute Force) from raw traffic features
+- **Explaining threats in plain English** via a Groq LLM backed by a RAG retrieval pipeline
+- **Providing an AI chatbot** for conversational security Q&A, grounded in real security docs
+- **Generating downloadable PDF reports** for audits and incident documentation
 
 ---
 
@@ -34,41 +90,48 @@ Traditional network monitoring tools generate hundreds of raw alerts with no con
 
 | Feature | Description |
 |---|---|
-| 🔍 **Anomaly Detection** | Autoencoder neural network trained on normal traffic — flags deviations |
-| 🎯 **Attack Classification** | Rule-based classifier identifies DDoS, SYN Flood, Port Scan, and more |
-| 🤖 **LLM Threat Explainer** | Groq (LLaMA 3.1) explains every alert with remediation steps |
-| 📚 **RAG Security Engine** | ChromaDB retrieves relevant security docs to ground LLM responses |
-| 💬 **Security Chatbot** | Ask anything — "What is ARP Spoofing?" — and get expert answers |
-| 📊 **Live Dashboard** | Real-time charts: traffic graph, attack distribution, alert history |
-| 📄 **PDF Report Generator** | Download a full security report with one click |
-| 🗄️ **Alert History** | All alerts stored in SQLite, queryable anytime |
-| ⚡ **Severity Scoring** | Every anomaly scored as Low / Medium / High / Critical |
+| 🔍 **Anomaly Detection** | Autoencoder trained only on normal traffic — flags deviations via reconstruction error |
+| 🎯 **Attack Classification** | Rule-based classifier maps anomalies to DDoS, SYN Flood, Port Scan, and more |
+| 🤖 **LLM Threat Explainer** | Groq (LLaMA 3.1-8B) explains every alert with top features + remediation steps |
+| 📚 **RAG Security Engine** | ChromaDB retrieves curated security docs to ground LLM responses |
+| 💬 **AI Assistant Chatbot** | Dedicated chat tab with suggested prompts and expert, grounded answers |
+| 📊 **Live Dashboard** | Traffic line chart, attack distribution pie chart, stat cards, alert feed |
+| 📄 **PDF Report Generator** | Executive summary + full alert list downloadable with one click |
+| 🗄️ **Persistent Alert History** | All detections stored in SQLite and queryable at any time |
+| ⚡ **Severity Scoring** | Every anomaly scored Low / Medium / High / Critical based on reconstruction error |
+| 🐳 **Dockerized Deployment** | Backend containerized and deployed on Hugging Face Spaces via Docker |
 
 ---
 
 ## 🏗️ Architecture
 
 ```
-Network Traffic CSV (CICIDS2017 format)
-           │
-           ▼
-    ┌─────────────────┐
-    │  FastAPI Backend │  ← REST API + Business Logic
-    └─────────────────┘
-           │
-    ┌──────┴──────────────────────────┐
-    │                                 │
-    ▼                                 ▼
-┌─────────────────┐         ┌─────────────────────┐
-│ Autoencoder ML  │         │   Groq LLM Engine   │
-│ (Anomaly Det.)  │         │  (LLaMA 3.1-8B)     │
-└────────┬────────┘         └──────────┬──────────┘
+User uploads network traffic CSV
+              │
+              ▼
+   ┌──────────────────────┐
+   │   React Dashboard    │  ←  Vercel (Frontend)
+   │  Recharts · Fetch    │
+   └──────────┬───────────┘
+              │  REST API
+              ▼
+   ┌──────────────────────┐
+   │   FastAPI Backend    │  ←  Hugging Face Spaces (Docker)
+   └──────┬───────────────┘
+          │
+   ┌──────┴──────────────────────────────┐
+   │                                     │
+   ▼                                     ▼
+┌───────────────────┐       ┌────────────────────────┐
+│  Autoencoder (ML) │       │   Groq LLM Engine      │
+│  PyTorch          │       │   LLaMA 3.1-8B-instant │
+└────────┬──────────┘       └──────────┬─────────────┘
          │                             │
          ▼                             ▼
-┌─────────────────┐         ┌─────────────────────┐
-│Attack Classifier│         │  ChromaDB RAG Store │
-│(Rule-Based)     │         │  (Security Docs)    │
-└────────┬────────┘         └──────────┬──────────┘
+┌───────────────────┐       ┌────────────────────────┐
+│  Rule-Based       │       │   ChromaDB RAG Store   │
+│  Attack Classifier│       │   (Security Docs)      │
+└────────┬──────────┘       └──────────┬─────────────┘
          │                             │
          └──────────────┬──────────────┘
                         │
@@ -77,38 +140,36 @@ Network Traffic CSV (CICIDS2017 format)
                │  SQLite Alerts  │
                └────────┬────────┘
                         │
-                        ▼
-               ┌─────────────────┐
-               │  React Dashboard│
-               │  + Recharts     │
-               └─────────────────┘
+             ┌──────────┴───────────┐
+             ▼                      ▼
+      Dashboard UI            PDF Report
 ```
 
 ---
 
-## 🧠 ML Pipeline
-
-This is the core of NetGuard AI. Here's exactly how it works:
+## 🧠 ML Pipeline — The Core
 
 ### Why an Autoencoder?
 
-Most intrusion detection systems need **labeled attack data** to train on — expensive, incomplete, and useless against new attack types.
+Most intrusion detection systems need **labeled attack data** to train — expensive, incomplete, and blind to new attack types.
 
-An **Autoencoder** takes a different approach:
-- Trained **only on normal (BENIGN) traffic**
-- Learns to **reconstruct** normal network flows with very low error
-- When an **attack** comes in → reconstruction error is high → **anomaly flagged**
+An **Autoencoder** learns differently:
 
-This means NetGuard AI can detect **zero-day attacks it has never seen before**.
+- Trained **only on normal (BENIGN) traffic** from CICIDS2017
+- Learns to **reconstruct normal flows** with minimal error
+- **Attacks produce high reconstruction error** → anomaly flagged
+
+This means NetGuard AI can detect **zero-day attacks it has never seen**, with no labeled attack samples needed during training.
 
 ### Model Architecture
 
 ```
-Input Layer    →  78 network features (MinMax scaled)
+Input          →  78 network features (MinMax scaled to [0, 1])
 Encoder        →  Linear(78→64) → ReLU → Linear(64→32) → ReLU → Linear(32→8)
-Latent Space   →  8 dimensions (compressed representation of normal traffic)
+Latent Space   →  8-dimensional compressed representation of normal traffic
 Decoder        →  Linear(8→32) → ReLU → Linear(32→64) → ReLU → Linear(64→78)
-Output Layer   →  Reconstructed traffic features
+Output         →  Reconstructed traffic features
+Loss           →  MSE between input and reconstruction
 ```
 
 ### Anomaly Scoring
@@ -116,51 +177,55 @@ Output Layer   →  Reconstructed traffic features
 ```python
 reconstruction_error = MSE(original, reconstructed)
 
-# Severity Thresholds
-if error < threshold:              → Normal
-elif error < threshold * 2:        → Low
-elif error < threshold * 4:        → Medium  
-elif error < threshold * 8:        → High
-else:                              → Critical
+if error < threshold:           → Normal
+elif error < threshold * 2:     → Low
+elif error < threshold * 4:     → Medium
+elif error < threshold * 8:     → High
+else:                           → Critical
 ```
 
 ### Top Feature Detection
 
-For each anomaly, NetGuard identifies **which features caused the alert** (e.g., `Flow Packets/s`, `SYN Flag Count`) — giving admins precise forensic insight.
+For each anomaly, NetGuard identifies **which features drove the alert** — e.g. `Active Max`, `Flow IAT Mean`, `Flow IAT Std`, `Flow Bytes/s`, `SYN Flag Count` — giving admins precise forensic context (visible in the AI Explanation modal above).
 
 ### Dataset
 
-Trained on **CICIDS2017** (Canadian Institute for Cybersecurity Intrusion Detection dataset):
-- Normal traffic: `BENIGN`
-- Attack traffic: DDoS, Port Scan, Botnet, Brute Force, Web Attacks, DoS
+Trained on **CICIDS2017** (Canadian Institute for Cybersecurity):
+
+- Training data: `BENIGN` samples only
+- Attack traffic (evaluation only): DDoS, Port Scan, Botnet, Brute Force, Web Attacks, DoS
 
 ---
 
 ## 🔬 Attack Classification
 
-After anomaly detection, a **rule-based classifier** gives the attack a human-readable name:
+After anomaly detection, a rule-based classifier assigns a human-readable label:
 
 | Condition | Detected Attack |
 |---|---|
 | `Flow Bytes/s > 1,000,000` | Volumetric DDoS |
 | `Packet Rate > 5,000` | Packet Flood |
-| `SYN Flag Count high` | SYN Flood |
-| `Repeated port sweep pattern` | Port Scan |
-| Other anomaly patterns | Suspicious Activity |
+| `SYN Flag Count` elevated | SYN Flood |
+| Repeated destination port sweep | Port Scan |
+| Other high-error anomaly | Suspicious Network Activity |
 
 ---
 
-## 🤖 LLM + RAG Layer
+## 🤖 LLM + RAG — The Explainer Layer
 
-Every detected threat is sent to **Groq (LLaMA 3.1-8B-instant)** with:
-1. **Alert context**: attack type, severity score, top features
-2. **RAG context**: relevant security documents retrieved from **ChromaDB**
+Every alert triggers a **Groq (LLaMA 3.1-8B-instant)** call with two inputs:
 
-The LLM returns a structured explanation:
-- What the attack is
-- Why it was flagged
-- Why it's dangerous
-- Recommended remediation steps
+1. **Alert context** — attack type, severity, anomaly score, top contributing features
+2. **RAG context** — security documents retrieved from **ChromaDB** by vector similarity
+
+The LLM returns a structured explanation covering:
+
+- What the attack is and how it works
+- Why this specific traffic triggered the flag
+- The potential impact
+- Concrete remediation steps
+
+The AI Assistant chatbot uses the same RAG pipeline for open-ended security Q&A, with suggested prompts to guide users.
 
 ---
 
@@ -169,50 +234,47 @@ The LLM returns a structured explanation:
 ### Backend
 | Technology | Purpose |
 |---|---|
-| **FastAPI** | REST API — async, auto-docs, Pydantic validation |
-| **PyTorch** | Autoencoder neural network |
+| **FastAPI** | Async REST API with auto Swagger/OpenAPI docs |
+| **PyTorch** | Autoencoder neural network — anomaly detection |
 | **scikit-learn** | MinMaxScaler for feature normalization |
-| **Groq API** | LLM inference (LLaMA 3.1-8B-instant) |
-| **ChromaDB** | Vector DB for RAG security documents |
-| **SQLite** | Alert history persistence |
-| **ReportLab** | PDF report generation |
-| **Pandas / NumPy** | Data preprocessing |
+| **Groq API** | LLM inference — LLaMA 3.1-8B-instant |
+| **ChromaDB** | Vector DB for RAG document retrieval |
+| **SQLite** | Persistent alert history storage |
+| **ReportLab** | Programmatic PDF report generation |
+| **Pandas / NumPy** | Data preprocessing and feature extraction |
+| **Docker** | Containerized deployment on Hugging Face Spaces |
 
 ### Frontend
 | Technology | Purpose |
 |---|---|
-| **React 18** | Dashboard UI |
-| **Recharts** | Traffic graph + attack distribution pie chart |
-| **Fetch API** | Backend communication |
-| **CSS** | Custom styling |
+| **React 18** | Dashboard UI and AI Assistant tab |
+| **Recharts** | Live traffic line chart + attack distribution pie chart |
+| **Fetch API** | REST communication with FastAPI backend |
+| **Vercel** | Frontend deployment and global CDN |
 
 ---
 
 ## 🚀 Setup & Installation
 
 ### Prerequisites
+
 - Python 3.10+
 - Node.js 18+
-- Groq API Key ([get one free](https://console.groq.com))
+- Groq API Key — [get one free](https://console.groq.com)
 
 ### Backend Setup
 
 ```bash
-# Clone the repo
 git clone https://github.com/yourusername/netguard-ai.git
 cd netguard-ai/backend
 
-# Create virtual environment
 python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
+source venv/bin/activate        # Windows: venv\Scripts\activate
 
-# Install dependencies
 pip install -r requirements.txt
 
-# Add your Groq API key
 export GROQ_API_KEY="your_groq_api_key_here"
 
-# Start the backend
 uvicorn main:app --reload --port 8000
 ```
 
@@ -220,26 +282,26 @@ uvicorn main:app --reload --port 8000
 
 ```bash
 cd ../frontend
-
-# Install dependencies
 npm install
-
-# Start the frontend
 npm start
 ```
 
 Visit `http://localhost:3000` — the dashboard is live.
 
-### Training the Model (Optional)
+### Docker (Production)
+
+```bash
+docker build -t netguard-backend ./backend
+docker run -p 8000:8000 -e GROQ_API_KEY="your_key" netguard-backend
+```
+
+### Train the Model (Optional)
 
 ```bash
 cd backend/ml
-
-# Download CICIDS2017 dataset and place CSV in /data
+# Place CICIDS2017 CSV files in /data
 python train_autoencoder.py
-
-# Model saved to: models/autoencoder.pth
-# Scaler saved to: models/scaler.pkl
+# Outputs: models/autoencoder.pth + models/scaler.pkl
 ```
 
 ---
@@ -248,69 +310,33 @@ python train_autoencoder.py
 
 | Method | Endpoint | Description |
 |---|---|---|
-| `GET` | `/` | Health check |
-| `GET` | `/dashboard-stats` | Packets, threats, health score |
-| `POST` | `/upload-log` | Upload network traffic CSV |
-| `POST` | `/analyze` | Run anomaly detection on uploaded log |
-| `POST` | `/chat` | Ask the security chatbot a question |
-| `GET` | `/history` | Get all stored alerts |
-| `GET` | `/alert/{id}` | Get details + LLM explanation for one alert |
-| `GET` | `/download-report` | Download PDF security report |
+| `GET` | `/` | Health check — returns version |
+| `GET` | `/dashboard-stats` | Packets, threat count, blocked IPs, health score |
+| `POST` | `/upload-log` | Upload a network traffic CSV |
+| `POST` | `/analyze` | Run Autoencoder anomaly detection on uploaded log |
+| `POST` | `/chat` | Query the RAG-powered AI Assistant |
+| `GET` | `/history` | Retrieve all stored alerts from SQLite |
+| `GET` | `/alert/{id}` | Get full details + LLM explanation for one alert |
+| `GET` | `/download-report` | Download formatted PDF security report |
+
+Full interactive docs at [`/docs`](https://omhugginggface-netguard-ai-backend.hf.space/docs).
 
 ### Example: Upload & Analyze
 
 ```bash
-# Upload a log file
-curl -X POST http://localhost:8000/upload-log \
+curl -X POST https://omhugginggface-netguard-ai-backend.hf.space/upload-log \
   -F "file=@network_traffic.csv"
 
-# Analyze uploaded log
-curl -X POST http://localhost:8000/analyze
+curl -X POST https://omhugginggface-netguard-ai-backend.hf.space/analyze
 ```
 
-### Example: Chat
+### Example: AI Assistant
 
 ```bash
-curl -X POST http://localhost:8000/chat \
+curl -X POST https://omhugginggface-netguard-ai-backend.hf.space/chat \
   -H "Content-Type: application/json" \
-  -d '{"message": "What is a SYN Flood attack and how do I stop it?"}'
+  -d '{"message": "Explain DNS amplification attacks and how to stop them"}'
 ```
-
----
-
-## 📊 Dashboard Overview
-
-The React dashboard provides:
-
-- **📦 Packets Today** — total flows analyzed from the uploaded log
-- **🚨 Threats Detected** — count of anomalies flagged in the latest analysis
-- **💚 Network Health Score** — `100 - (anomalies × 5)` — at-a-glance health metric
-- **📈 Traffic Graph** — packet volume over time (from uploaded log)
-- **🥧 Attack Distribution** — pie chart of detected attack types
-- **📋 Alert Table** — all alerts with severity badges, source IPs, and "Explain" button
-- **💬 Chatbot Panel** — RAG-powered security Q&A
-
----
-
-## ⚠️ Known Limitations
-
-1. **Dataset-specific** — trained on CICIDS2017; may need retraining for different network environments
-2. **Offline analysis** — currently processes uploaded CSV logs; real-time packet capture not yet implemented
-3. **Heuristic classifier** — attack classification uses rules; could be upgraded to a supervised classifier
-4. **SQLite** — suitable for development; not ideal for high-volume production use
-
----
-
-## 🔮 Roadmap
-
-- [ ] Real-time packet capture (libpcap / Scapy)
-- [ ] Kafka streaming for live traffic analysis
-- [ ] Supervised attack classifier (trained on labeled CICIDS2017 data)
-- [ ] Automated model retraining pipeline
-- [ ] Threat intelligence feed integration
-- [ ] SIEM (Splunk / Elastic) integration
-- [ ] Docker Compose deployment
-- [ ] Cloud deployment (AWS / GCP)
 
 ---
 
@@ -319,17 +345,18 @@ The React dashboard provides:
 ```
 netguard-ai/
 ├── backend/
-│   ├── main.py                  # FastAPI app & all endpoints
+│   ├── main.py                  # FastAPI app — all endpoints
+│   ├── Dockerfile               # Docker config for Hugging Face Spaces
 │   ├── ml/
-│   │   ├── autoencoder.py       # PyTorch model definition
-│   │   ├── train.py             # Training script
-│   │   ├── inference.py         # Anomaly detection logic
+│   │   ├── autoencoder.py       # PyTorch Autoencoder definition
+│   │   ├── train.py             # Training script (CICIDS2017 → weights)
+│   │   ├── inference.py         # Anomaly detection + severity scoring
 │   │   └── classifier.py        # Rule-based attack classifier
 │   ├── rag/
-│   │   ├── chroma_store.py      # ChromaDB setup & retrieval
-│   │   └── security_docs/       # Knowledge base documents
+│   │   ├── chroma_store.py      # ChromaDB setup, ingestion, retrieval
+│   │   └── security_docs/       # Curated security knowledge base
 │   ├── db/
-│   │   └── database.py          # SQLite alert storage
+│   │   └── database.py          # SQLite alert storage layer
 │   ├── reports/
 │   │   └── generator.py         # ReportLab PDF generator
 │   ├── models/
@@ -338,30 +365,53 @@ netguard-ai/
 │   └── requirements.txt
 ├── frontend/
 │   ├── src/
-│   │   ├── App.jsx              # Main dashboard component
+│   │   ├── App.jsx              # Root — routing between Dashboard / AI Assistant
 │   │   ├── components/
-│   │   │   ├── Dashboard.jsx
-│   │   │   ├── AlertTable.jsx
-│   │   │   ├── TrafficGraph.jsx
-│   │   │   ├── AttackPieChart.jsx
-│   │   │   └── Chatbot.jsx
+│   │   │   ├── Dashboard.jsx    # Stat cards + charts layout
+│   │   │   ├── AlertTable.jsx   # Detection history table
+│   │   │   ├── TrafficGraph.jsx # Recharts live traffic line chart
+│   │   │   ├── AttackPieChart.jsx # Attack distribution pie chart
+│   │   │   └── Chatbot.jsx      # AI Assistant chat interface
 │   │   └── index.css
 │   └── package.json
 ├── data/
-│   └── sample_traffic.csv       # Sample test data
+│   └── sample_traffic.csv       # Sample CICIDS2017-format test data
 └── README.md
 ```
 
 ---
 
+## ⚠️ Known Limitations
+
+1. **Dataset-specific model** — trained on CICIDS2017; retraining recommended for significantly different network environments
+2. **Offline log analysis** — processes uploaded CSV files; real-time packet capture (libpcap/Scapy) is on the roadmap
+3. **Rule-based classifier** — attack labeling uses heuristics; a supervised classifier trained on labeled data would improve accuracy
+4. **SQLite storage** — fine for demos; PostgreSQL recommended for production-scale alert volumes
+
+---
+
+## 🔮 Roadmap
+
+- [ ] Real-time packet capture via libpcap / Scapy
+- [ ] Kafka streaming pipeline for live traffic ingestion
+- [ ] Supervised attack classifier trained on labeled CICIDS2017 data
+- [ ] Automated model retraining pipeline
+- [ ] Threat intelligence feed integration (MITRE ATT&CK)
+- [ ] SIEM integration (Splunk / Elastic Stack)
+- [ ] Docker Compose for one-command local deployment
+- [ ] PostgreSQL for production-grade storage
+
+---
+
 ## 🤝 Contributing
 
-Pull requests are welcome! For major changes, please open an issue first.
+Pull requests are welcome. For major changes, please open an issue first.
 
-1. Fork the repo
-2. Create your feature branch: `git checkout -b feature/real-time-capture`
-3. Commit your changes: `git commit -m 'Add real-time packet capture'`
-4. Push and open a PR
+```bash
+git checkout -b feature/real-time-capture
+git commit -m 'Add real-time packet capture via Scapy'
+# open a PR
+```
 
 ---
 
@@ -373,7 +423,7 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 <div align="center">
 
-**Built with 🛡️ to make networks safer**
+**Built end-to-end with 🛡️ — ML training · FastAPI backend · React frontend · RAG pipeline · Docker · Cloud deployment**
 
 *If this project helped you, please give it a ⭐*
 
