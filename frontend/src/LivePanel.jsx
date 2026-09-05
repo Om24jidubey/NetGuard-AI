@@ -63,8 +63,8 @@ export default function LivePanel({ setIsLive }) {
       console.error("Failed to reset session", e);
     }
 
-    // Convert HTTP URL to WebSocket URL
-    const wsUrl = API.replace(/^http/, "ws") + `/ws/live-capture?mode=${captureMode}`;
+    // Dynamically construct WebSocket URL using the pre-configured WS_URL
+    const wsUrl = `${WS_URL}-capture?mode=${captureMode}`;
     console.log("[WS] Connecting to:", wsUrl);
 
     const socket = new WebSocket(wsUrl);
