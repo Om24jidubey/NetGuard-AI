@@ -1,3 +1,11 @@
+---
+title: NetGuard AI
+emoji: 🚀
+colorFrom: blue
+colorTo: purple
+sdk: docker
+pinned: false
+---
 <div align="center">
 
 <img src="https://img.shields.io/badge/NetGuard-AI-0d1f3c?style=for-the-badge&logo=shield&logoColor=white" />
@@ -428,3 +436,4 @@ MIT License — see [LICENSE](LICENSE) for details.
 *If this project helped you, please give it a ⭐*
 
 </div>
+
