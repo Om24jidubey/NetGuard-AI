@@ -1,0 +1,12 @@
+venv/
+__pycache__/
+*.db
+.env
+*.pyc
+.python-version
+runtime.txt
+*.egg-info/
+dist/
+build/
+.DS_Store
+chroma_db/
