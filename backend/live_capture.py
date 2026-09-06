@@ -333,6 +333,10 @@ class LiveCaptureManager:
                 # 85% normal traffic, 15% attack traffic
                 is_attack = random.random() < 0.15
                 
+                from attack_tester import global_stop_event
+                is_active_injection = not global_stop_event.is_set()
+                if is_active_injection:
+                    is_attack = True
                 sample = None
                 if is_attack and self.attack_samples:
                     sample = random.choice(self.attack_samples)
@@ -374,7 +378,13 @@ class LiveCaptureManager:
                     # Safely calculate bytes from original sample since we dropped the length features from AI
                     fwd_bytes = sample.get("Total Length of Fwd Packets", 0)
                     bwd_bytes = sample.get(" Total Length of Bwd Packets", 0)
+                    total_pkts = int(feature_dict.get(" Total Fwd Packets", 0) + feature_dict.get(" Total Backward Packets", 0))
                     
+                    if is_active_injection:
+                        total_pkts += random.randint(5000, 25000)
+                        fwd_bytes += random.randint(1000000, 5000000)
+                        
+
                     # Build live alert
                     result = {
                         "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
@@ -383,7 +393,7 @@ class LiveCaptureManager:
                         "dest_ip": dst_ip,
                         "dest_port": dport,
                         "protocol": proto,
-                        "packets": int(feature_dict.get(" Total Fwd Packets", 0) + feature_dict.get(" Total Backward Packets", 0)),
+                        "packets": total_pkts,
                         "bytes": int(fwd_bytes + bwd_bytes),
                         "is_anomaly": detection["is_anomaly"],
                         "score": detection["score"],

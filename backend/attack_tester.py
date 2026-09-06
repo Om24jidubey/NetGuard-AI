@@ -15,6 +15,7 @@ TARGET_PORT = 53
 
 # Global event so we can stop it from a different API endpoint
 global_stop_event = threading.Event()
+global_stop_event.set() # Default to stopped state
 
 def udp_flood_simulation(duration=None):
     print("==================================================")
