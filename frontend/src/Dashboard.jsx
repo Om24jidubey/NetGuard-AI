@@ -183,12 +183,24 @@ export default function Dashboard() {
   async function handleBlockIP(ip) {
     if (!ip) return;
     try {
+      const ipOnly = ip.split(':')[0];
       await fetch(`${API}/block-ip`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ip })
+        body: JSON.stringify({ ip: ipOnly })
       });
-      alert(`Successfully blocked IP: ${ip}`);
+      alert(`Successfully blocked IP: ${ipOnly}`);
+      
+      // Instantly remove from local UI to prevent flicker
+      setStats(prev => {
+        if (!prev) return prev;
+        return {
+          ...prev,
+          recent_alerts: prev.recent_alerts.filter(a => (a.ip || "").split(':')[0] !== ipOnly),
+          blocked_ips: prev.blocked_ips + 1
+        };
+      });
+      
       await fetchStats();
     } catch {
       alert("Failed to block IP. Backend not reachable.");
@@ -219,9 +231,20 @@ export default function Dashboard() {
     try {
       await fetch(`${API}/reset-session`, { method: "POST" });
       setUploadResult(null);
+      // Immediately reset all local state so the UI reflects 0 instantly,
+      // even if the WebSocket is still streaming in the Live panel
+      setStats(prev => prev ? {
+        ...prev,
+        total_packets_today: 0,
+        threats_detected: 0,
+        blocked_ips: 0,
+        network_health: 100,
+        recent_alerts: [],
+        traffic_history: [],
+      } : prev);
+      setHistory([]);
       await fetchStats();
       await fetchHistory();
-      alert("Session completely cleared!");
     } catch {
       alert("Failed to clear session.");
     }

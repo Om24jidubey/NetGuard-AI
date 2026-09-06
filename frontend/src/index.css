@@ -311,11 +311,131 @@ body {
   height: 300px; color: #64748b;
 }
 
-/* ── Responsive ── */
+/* ── Responsive — Mobile First ── */
+
+/* Tablet: 768px and below */
 @media (max-width: 768px) {
   .stat-grid  { grid-template-columns: 1fr 1fr; }
   .charts-row { grid-template-columns: 1fr; }
+
+  /* Navbar: wrap brand + tabs vertically */
+  .navbar {
+    height: auto;
+    flex-wrap: wrap;
+    padding: 10px 14px;
+    gap: 8px;
+  }
+  .nav-tabs {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .nav-status { order: 2; }
+
+  /* Main padding reduction */
+  .main-content { padding: 14px; }
+
+  /* Alert cards: stack left / right sections */
+  .alert-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .alert-right {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Live action bar: stack vertically */
+  .live-action-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .live-buttons {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .start-btn, .stop-btn, .download-btn {
+    flex: 1 1 auto;
+    min-width: 120px;
+    text-align: center;
+  }
+
+  /* Live table: enable horizontal scroll, shrink font */
+  .live-table-container {
+    overflow-x: auto;
+  }
+  .live-table {
+    font-size: 11px;
+    min-width: 720px;
+  }
+  .live-table th,
+  .live-table td {
+    padding: 8px 10px;
+  }
+
+  /* History table: enable horizontal scroll */
+  .history-card {
+    overflow-x: auto;
+  }
+  .history-table {
+    min-width: 500px;
+  }
+
+  /* Modal: nearly full screen on mobile */
+  .modal {
+    width: 95vw;
+    max-height: 90vh;
+  }
+
+  /* Dashboard header button wraps */
+  .dashboard > div:first-child {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* Upload section header */
+  .section > div[style*="space-between"] {
+    flex-direction: column !important;
+    gap: 10px;
+  }
 }
+
+/* Mobile: 480px and below */
+@media (max-width: 480px) {
+  .stat-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat-card { padding: 14px; }
+  .stat-value { font-size: 22px; }
+
+  .brand-tag { display: none; }
+  .nav-tab { padding: 5px 10px; font-size: 13px; }
+
+  /* Alert card: tighten */
+  .alert-card { padding: 12px; }
+  .alert-right {
+    justify-content: flex-start;
+  }
+  .explain-btn, .download-btn { font-size: 12px; padding: 5px 10px; }
+  .severity-badge { font-size: 10px; padding: 2px 8px; }
+
+  /* Chat panel shorter on mobile */
+  .chat-panel { height: calc(100vh - 170px); }
+
+  /* Live table font even smaller */
+  .live-table { font-size: 10px; }
+  .live-table th, .live-table td { padding: 6px 8px; }
+
+  /* Make buttons in live buttons full width on very small */
+  .live-buttons { flex-direction: column; }
+  .start-btn, .stop-btn, .download-btn { width: 100%; }
+}
+
 
 
 /* ── Download Report Button ── */

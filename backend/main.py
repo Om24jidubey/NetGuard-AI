@@ -447,9 +447,11 @@ def search_docs(q: str):
 @app.post("/block-ip")
 def block_ip(request: BlockIPRequest):
     """Adds an IP to the global blocklist."""
-    BLOCKED_IPS.add(request.ip)
-    print(f"[Firewall] Blocked IP: {request.ip}")
-    return {"status": "success", "blocked_ip": request.ip}
+    ip_only = request.ip.split(':')[0] if request.ip else ""
+    if ip_only:
+        BLOCKED_IPS.add(ip_only)
+    print(f"[Firewall] Blocked IP: {ip_only}")
+    return {"status": "success", "blocked_ip": ip_only}
 
 
 
