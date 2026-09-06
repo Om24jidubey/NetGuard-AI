@@ -9,7 +9,7 @@ import Dashboard from "./Dashboard";
 import ChatPanel from "./ChatPanel";
 import LivePanel from "./LivePanel";
 import "./index.css";
-import logo from "./netguard-navbar-logo.svg";
+import logo from "./brand-logo.svg";
 
 // Dynamically use relative paths for production on Hugging Face Spaces
 const API = process.env.REACT_APP_API_URL || "";
