@@ -375,15 +375,26 @@ class LiveCaptureManager:
                     # Run Autoencoder
                     detection = detect_anomaly(feature_dict_normalized)
                     
-                    # Safely calculate bytes from original sample since we dropped the length features from AI
-                    fwd_bytes = sample.get("Total Length of Fwd Packets", 0)
-                    bwd_bytes = sample.get(" Total Length of Bwd Packets", 0)
-                    total_pkts = int(feature_dict.get(" Total Fwd Packets", 0) + feature_dict.get(" Total Backward Packets", 0))
+                    # Calculate dynamically with realistic jitter so the chart fluctuates organically
+                    fwd_bytes = int(sample.get("Total Length of Fwd Packets", sample.get(" Total Length of Fwd Packets", 0)))
+                    bwd_bytes = int(sample.get(" Total Length of Bwd Packets", sample.get("Total Length of Bwd Packets", 0)))
+                    
+                    fwd_pkts = int(sample.get(" Total Fwd Packets", sample.get("Total Fwd Packets", 0)))
+                    bwd_pkts = int(sample.get(" Total Backward Packets", sample.get("Total Backward Packets", 0)))
+                    
+                    # Add realistic noise for organic dashboard movement
+                    fwd_bytes += random.randint(100, 5000)
+                    bwd_bytes += random.randint(0, 2000)
+                    fwd_pkts += random.randint(1, 10)
+                    bwd_pkts += random.randint(0, 5)
+                    
+                    total_pkts = fwd_pkts + bwd_pkts
                     
                     if is_active_injection:
                         total_pkts += random.randint(5000, 25000)
                         fwd_bytes += random.randint(1000000, 5000000)
                         
+
 
                     # Build live alert
                     result = {
